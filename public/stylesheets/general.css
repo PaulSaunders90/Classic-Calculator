@@ -1,0 +1,81 @@
+/* General Containers */
+
+html, body {
+    position: relative;
+    width: 100%;
+    background-color: #222;
+    font-family: 'Oswald', sans-serif;
+}
+
+.generalcontainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Report Bug Feature */
+
+#reportbug {
+    max-width: 100%;
+    background-color: #1c1c1c;
+    margin-top: 20px;
+    text-align: center;
+    padding: 10px;
+}
+
+#reportbug div a {
+    margin-top: 25px;
+    text-decoration: none;
+}
+
+#reportbug span {
+    height: 100px;
+    width: 125px;
+    display: inline-block;
+    background-image: url('/img/error/mailbox.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#reportbug h5 {
+    color: #ecb939;
+}
+
+@media(min-width: 320px) {
+    #reportbug h5 {
+        font-size: 13px;
+    }
+}
+
+@media(min-width: 770px) {
+    #reportbug h5 {
+        font-size: 20px;
+    }
+}
+
+/* Footer Text */
+
+.footer{
+    display: flex;
+    justify-content: center;
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+#footertext {
+    width: 100%;
+    margin: 25px 0;
+    right: 0;
+    font-size: 12px;
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #FFFAF0;
+}
+
+#footertext p a{
+    color: #FFFAF0;
+    text-decoration: underline;
+}

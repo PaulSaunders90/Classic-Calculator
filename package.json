@@ -1,0 +1,25 @@
+{
+  "name": "classicwowcalculator",
+  "version": "1.0.0",
+  "description": "Classic WoW Talent Tree App",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "Paul Saunders",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "ejs": "^2.7.4",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "heroku": "^7.47.10",
+    "heroku-ssl-redirect": "0.0.4",
+    "nodemailer": "^6.4.17",
+    "nodemailer-express-handlebars": "^3.3.0",
+    "normalize.css": "^8.0.1",
+    "yarn": "^1.22.10"
+  }
+}

@@ -1,0 +1,32 @@
+#errorcontainer{
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+#error{
+    color: rgb(116, 0, 1);
+    font-size: 85px;
+}
+
+#errorimage{
+    display: inline-block;
+    background-image: url('/img/error/404.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+}
+
+#errortext{
+    display: inline-block;
+    width: 300px;
+    height: auto;
+    font-size: 20px;
+    color: #ecb939;
+    vertical-align: top;
+    margin-top:75px;
+    margin-left: 100px;
+}

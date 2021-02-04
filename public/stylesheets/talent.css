@@ -1,0 +1,567 @@
+    /* Talent Page Layout */
+
+    /* Class Selection Menu */
+
+    .character-button {
+        margin-right: 1%;
+        margin-left: 1%;
+        border: none !important;
+        font-size: 0;
+    }
+
+    #warriorbtn {
+        background-image: url("/img/class-icons/warrioricon.png");
+        background-size: cover;
+        background-color: transparent;
+    }
+
+    #magebtn {
+        background-image: url("/img/class-icons/mageicon.png");
+        background-size: cover;
+        background-color: transparent;
+    }
+
+    #roguebtn {
+        background-image: url("/img/class-icons/rogueicon.png");
+        background-size: cover;
+        background-color: transparent;
+    }
+
+    #priestbtn {
+        background-image: url("/img/class-icons/priesticon.png");
+        background-size: cover;
+        background-color: transparent;
+    }
+
+    #hunterbtn {
+        background-image: url("/img/class-icons/huntericon.png");
+        background-size: cover;
+        background-color: transparent;
+    }
+
+    #warlockbtn {
+        background-image: url("/img/class-icons/warlockicon.png");
+        background-size: cover;
+        background-color: transparent;
+    }
+
+    #druidbtn {
+        background-image: url("/img/class-icons/druidicon.png");
+        background-size: cover;
+        background-color: transparent;
+    }
+
+    #shamanbtn {
+        background-image: url("/img/class-icons/shamanicon.png");
+        background-size: cover;
+        background-color: transparent;
+    }
+
+    #paladinbtn {
+        background-image: url("/img/class-icons/paladinicon.png");
+        background-size: cover;
+        background-color: transparent;
+    }
+
+    .menucontainer {
+        position: relative;
+        width: 100%;
+        height: 400px;
+    }
+
+    #menu {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        list-style: none;
+    }
+
+    .menu-button {
+        opacity: 0;
+        z-index: -1;
+    }
+
+    .menu-button {
+        height: 150px;
+        width: 150px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -75px 0 0 -75px;
+        border-radius: 50%;
+        overflow: hidden;
+        text-decoration: none;
+        background-image: url('/img/talent-tree-icons/menu.png');
+        background-size: contain;
+    }
+
+    #menu:not(:target)>a:first-of-type, #menu:target>a:last-of-type {
+        opacity: 1;
+        z-index: 1;
+    }
+
+    #menu:not(:target)>.icon-plus:before, #menu:target>.icon-minus:before {
+        opacity: 1;
+    }
+
+    .menu-item {
+        position: absolute;
+        left: 55%;
+        line-height: 5px;
+        top: 50%;
+        border-radius: 50%;
+        transform: translate(0px, 0px);
+        transition: transform 500ms;
+        transition: .5s;
+    }
+
+    .menu-item:hover {
+        opacity: 0.5;
+        box-shadow: 0 5px 10px black;
+    }
+
+    .menu-item a {
+        position: relative;
+        top: 30%;
+        left: 0;
+        text-decoration: none;
+    }
+
+    @media(min-width: 320px) {
+        .menu-item {
+            margin-top: -50px;
+            margin-left: -30px;
+        }
+        .character-button {
+            width: 60px;
+            height: 60px;
+        }
+        #menu:target>.menu-item:nth-child(3) {
+            transform: rotate(-20deg) translateY(-105px) rotate(20deg);
+            transition-delay: 0.1s;
+        }
+        #menu:target>.menu-item:nth-child(4) {
+            transform: rotate(-60deg) translateY(-125px) rotate(60deg);
+            transition-delay: 0.1s;
+        }
+        #menu:target>.menu-item:nth-child(5) {
+            transform: rotate(20deg) translateY(-105px) rotate(-20deg);
+            transition-delay: 0.1s;
+        }
+        #menu:target>.menu-item:nth-child(6) {
+            transform: rotate(60deg) translateY(-125px) rotate(300deg);
+            transition-delay: 0.1s;
+        }
+        #menu:target>.menu-item:nth-child(7) {
+            transform: rotate(100deg) translateY(-125px) rotate(260deg);
+            transition-delay: 0.1s;
+        }
+        #menu:target>.menu-item:nth-child(8) {
+            transform: rotate(140deg) translateY(-135px) rotate(220deg);
+            transition-delay: 0.1s;
+        }
+        #menu:target>.menu-item:nth-child(9) {
+            transform: rotate(180deg) translateY(-135px) rotate(180deg);
+            transition-delay: 0.1s;
+        }
+        #menu:target>.menu-item:nth-child(10) {
+            transform: rotate(220deg) translateY(-135px) rotate(140deg);
+            transition-delay: 0.1s;
+        }
+        #menu:target>.menu-item:nth-child(11) {
+            transform: rotate(260deg) translateY(-125px) rotate(100deg);
+            transition-delay: 0.1s;
+        }
+    }
+
+    @media(min-width: 380px) {
+        .menu-item {
+            margin: -50px 0 0 -40px;
+        }
+        .character-button {
+            width: 80px;
+            height: 80px;
+        }
+        #menu:target>.menu-item:nth-child(3) {
+            transform: rotate(-20deg) translateY(-135px) rotate(20deg);
+            transition-delay: 0.1s;
+        }
+        #menu:target>.menu-item:nth-child(4) {
+            transform: rotate(-60deg) translateY(-150px) rotate(60deg);
+            transition-delay: 0.1s;
+        }
+        #menu:target>.menu-item:nth-child(5) {
+            transform: rotate(20deg) translateY(-135px) rotate(-20deg);
+            transition-delay: 0.1s;
+        }
+        #menu:target>.menu-item:nth-child(6) {
+            transform: rotate(60deg) translateY(-150px) rotate(300deg);
+            transition-delay: 0.1s;
+        }
+        #menu:target>.menu-item:nth-child(7) {
+            transform: rotate(100deg) translateY(-150px) rotate(260deg);
+            transition-delay: 0.1s;
+        }
+        #menu:target>.menu-item:nth-child(8) {
+            transform: rotate(140deg) translateY(-150px) rotate(220deg);
+            transition-delay: 0.1s;
+        }
+        #menu:target>.menu-item:nth-child(9) {
+            transform: rotate(180deg) translateY(-150px) rotate(180deg);
+            transition-delay: 0.1s;
+        }
+        #menu:target>.menu-item:nth-child(10) {
+            transform: rotate(220deg) translateY(-150px) rotate(140deg);
+            transition-delay: 0.1s;
+        }
+        #menu:target>.menu-item:nth-child(11) {
+            transform: rotate(260deg) translateY(-150px) rotate(100deg);
+            transition-delay: 0.1s;
+        }
+    }
+
+    #talentmenutext {
+        position: absolute;
+        top: 60%;
+        left: 0;
+        right: 0;
+        width: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        color: #ecb939;
+        text-align: center;
+        font-size: 20px;
+        z-index: 50;
+        background-color: rgba(2, 2, 2, 0.6);
+        border-radius: 10px;
+        pointer-events: none;
+    }
+
+    .tooltip {
+        visibility: hidden;
+        position: absolute;
+        width: 200px;
+        height: auto;
+        background-color: rgba(14, 26, 64, 0.8);
+        opacity: 1;
+        z-index: 50;
+        text-align: center;
+        border-radius: 5px;
+        border: 1px solid #d3d3d3;
+    }
+
+    .tooltip h1{
+        color: white;
+        padding: 5px;
+        font-size: 21px;
+    }
+
+    .tooltip p{
+        color: #ecb939;
+        padding: 5px;
+        font-size: 12px;
+    }
+
+    /* Talent Tree Layout */
+
+    /* Talent Tree Box */
+
+    #totaltalentpoints {
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        padding: 15px;
+        background-color: rgba(14, 26, 64, .8);
+        border-radius: 5px;
+        border: 1px solid #d3d3d3;
+        font-size: 30px;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    }
+
+    #totaltalentpoints h2{
+        color: #ecb939;
+    }
+
+    #talentpoints{
+        color: white;
+    }
+
+    @media(min-width: 320px) {
+        #totaltalentpoints {
+            width: 50%;
+        }
+    }
+
+    @media(min-width: 750px) {
+        #totaltalentpoints {
+            width: 25%;
+        }
+    }
+
+    .talentcontainer {
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    @media(min-width: 320px) {
+        .talentcontainer {
+            display: inline-block;
+            height: auto;
+        }
+        .classtalents{
+            margin: auto;
+            margin-bottom: 30px;
+        }
+    }
+
+    @media(min-width: 750px) {
+        .talentcontainer {
+            display: inline-block;
+            height: auto;
+            width: 100%;
+            text-align: center;
+        }
+        .classtalents{
+            display: inline-block;
+            margin-top: 25px;
+            margin-right: 35px;
+            margin-left: 35px;
+            margin-bottom: 30px;
+        }
+    }
+
+    @media(min-width: 1200px) {
+        .talentcontainer {
+            display: flex;
+            justify-content: space-evenly;
+            height: 700px;
+        }
+    }
+
+    .classtalents {
+        height: 600px;
+        width: 280px;
+        background-size: cover;
+        background-position: center;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        border-radius: 5px;
+        border: 1px solid #d3d3d3;
+    }
+
+    .talentheader {
+        height: 40px;
+        width: 100%;
+        color: #ecb939;
+        background-color: rgba(14, 26, 64, .6);
+        align-items: center;
+        display: inline-flex;
+        padding: 5px 0;
+    }
+
+    .talentheader p {
+        font-size: 30px;
+        margin-left: 10px;
+        width: 100%;
+    }
+
+    .talentheader section {
+        margin-right: 5px;
+        float: left;
+    }
+
+    #headericon1 {
+        width: 50px;
+        height: 30px;
+        background-repeat: no-repeat;
+    }
+
+    #headericon2 {
+        width: 50px;
+        height: 30px;
+        background-repeat: no-repeat;
+    }
+
+    #headericon3 {
+        width: 50px;
+        height: 30px;
+        background-repeat: no-repeat;
+    }
+
+    #talentpoints1 {
+        text-align: right;
+    }
+
+    #talentpoints2 {
+        text-align: right;
+    }
+
+    #talentpoints3 {
+        text-align: right;
+    }
+
+    .table-borderless {
+        height: 560px;
+        width: 100%;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    td {
+        height: 60px;
+        width: 20%;
+        text-align: center;
+        padding: 3%;
+        position: relative;
+        filter: grayscale(100%);
+    }
+
+    td .talentimage {
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 45px;
+        width: auto;
+    }
+
+    .individualtalentpoints {
+        width: 30px;
+        display: none;
+        position: absolute;
+        bottom: 10px;
+        right: 5px;
+        color: white;
+        background-color: black;
+        font-size: 12px;
+        border-radius: 8px;
+        border: 2px solid green;
+    }
+
+    .currenttalentpoints {
+        width: 30%;
+        height: 100%;
+    }
+
+    .maxtalentpoints {
+        width: 30%;
+        height: 100%;
+    }
+
+    .arrowcontainer {
+        display: none;
+        position: absolute;
+        pointer-events: none;
+        z-index: 10;
+        filter: grayscale(100%)
+    }
+
+    .secondarrowcontainer {
+        display: none;
+        position: absolute;
+        pointer-events: none;
+        z-index: 10;
+        filter: grayscale(100%)
+    }
+
+    .arrowdiv {
+        width: 100%;
+    }
+
+    .sharesrow {
+        display: block;
+        position: absolute;
+        height: 50%;
+        top: 25%;
+        right: -15%;
+    }
+
+    .sharescolumn {
+        display: block;
+        position: absolute;
+        width: 50%;
+        right: 25%;
+    }
+
+    .arrowright {
+        background-repeat: no-repeat;
+        background-position: right;
+        height: 100%;
+    }
+
+    .arrowbottom {
+        height: 100%;
+        background-position: bottom;
+        background-repeat: no-repeat;
+    }
+
+    .crossesbothcolumsnandrows {
+        display: block;
+        position: absolute;
+        top: 35%;
+        right: -85%;
+    }
+
+    .arrowrightbottombottom {
+        height: 100%;
+        width: 75%;
+        background-position: right;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .activetalent {
+        filter: none;
+    }
+
+    .loadedtalent{
+        border-width: 2px;
+        border-style: solid;
+        border-radius: 8px;
+        border-color: gray;
+    }
+
+    .activetalentimage {
+        border-color: green;
+        box-shadow: "0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)";
+    }
+
+    .activetalentnopoints {
+        border-color: red;
+    }
+
+    .talentwithpoints {
+        border-color: green;
+    }
+
+    .maxranktalent {
+        border-color: #DAA520;
+    }
+
+    /* Talent Output Boxes */
+
+    #talentOutputContainer {
+        background-color: rgba(14, 26, 64, .8);
+        width: 100%;
+        height: auto;
+        padding: 15px;
+        border-radius: 5px;
+        border: 1px solid #d3d3d3;
+    }
+    
+    #talentOutputContainer h1{
+        text-align: center;
+        color: white;
+        font-size: 25px;
+    }
+
+    #talentOutputContainer p{
+        color: #ecb939;
+    }
+
+    .talentOutput {
+        width: auto;
+        height: auto;
+    }
