@@ -78,9 +78,9 @@
         talentTreeHTML = ''
         for (let table = 1; table <= 3; table++) {
             talentTreeHTML += '<div class="classtalents" id="talent' + table + '">'
-            talentTreeHTML += '<section class="talentheader"><section id="headericon' + table + '"></section>'
+            talentTreeHTML += '<section class="talentheader"><section class= "iconcontainer" id="headericon' + table + '"></section>'
             talentTreeHTML += '<p id="headertext' + table + '"></p>'
-            talentTreeHTML += '<section id="talentpoints' + table + '"></section></section>'
+            talentTreeHTML += '<section class="treepoints" id="talentpoints' + table + '"></section></section>'
             talentTreeHTML += '<table class="table table-borderless"><tbody data-id="' + (table - 1) + '">'
             for (let row = 1; row <= 7; row++) {
                 talentTreeHTML += '<tr>'

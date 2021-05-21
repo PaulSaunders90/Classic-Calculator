@@ -10,6 +10,7 @@ var clickState = false,
     menuClicks = 0;
 
 // Talent Page Dictionary //
+// Talent Tree Class Directory //
 
 const classTalentsDict = {
     warrior: warriorTalents,
@@ -22,6 +23,8 @@ const classTalentsDict = {
     paladin: paladinTalents,
     druid: druidTalents
 };
+
+// DOM Directory //
 
 const DOM = {
     talentBox: document.getElementById("talentbox"),
@@ -44,6 +47,8 @@ const DOM = {
     talentMenuText: document.getElementById("talentmenutext")
 };
 
+// Talent Tree Objects //
+
 const talentTrees = {
     0: {
         dom: DOM['talentPoints1'],
@@ -62,14 +67,19 @@ const talentTrees = {
 // Talent Page Functions // 
 
 // General Class Talent Selection Function//
+// Default Menu Text Initialization //
 
 function toggleMenuText() {
     DOM["talentMenuText"].innerHTML = "Pick a Class!";
 };
 
+// Class Attribution DOM Selection //
+
 function selectClass(e) {
     currentClass = e.target.getAttribute("data-character");
 };
+
+// Talent Tree Class Display On Click and Object Initialization Function //
 
 function displayCharacter(e) {
     if (e.target.tagName.toLowerCase() == 'button') {
@@ -142,7 +152,7 @@ function changeClass() {
     buildUrl()
 };
 
-// Talent Table Generation Function //
+// Talent Table Generation and Talent Point Dataset Initialization Function //
 
 function buttons(classTalents) {
     classTalents.forEach(function (tree) {
@@ -229,19 +239,17 @@ function displayTalentArrows() {
     });
 };
 
-// Arrow Activation or Deactivation Function //
+// Arrow Activation or Deactivation Based Upon Talent Points Function //
 
 function checkIfArrowsAreLegal() {
     talentButtons.forEach(function (talentButton) {
         if (talentButton.dataset.arrowsDir != undefined) {
             const originOfArrow = [...talentButtons].find(button => button.dataset.pos == (talentButton.dataset.pos[0] + talentButton.dataset.arrowsFrom))
             const endPointOfArrow = [...talentButtons].find(button => button.dataset.pos == (talentButton.dataset.pos[0] + talentButton.dataset.arrowsTo))
-
             const talentTreePoints = talentTrees[talentButton.dataset.pos[0]].clicks;
             const requiredTalentTreePoints = endPointOfArrow.dataset.reqPoints;
             const sufficientReqPoints = (requiredTalentTreePoints <= talentTreePoints);
             const arrowOriginHasMaxRank = (originOfArrow.dataset.currentRank == originOfArrow.dataset.maxRank)
-
             if (sufficientReqPoints == true && arrowOriginHasMaxRank == true) {
                 if (originOfArrow.querySelector(".arrowcontainer") != null) {
                     originOfArrow.querySelector(".arrowcontainer").style.filter = 'none'
@@ -277,12 +285,9 @@ function clearTalentArrows() {
 // Talent Point Click Tracker Function // 
 
 document.addEventListener('click', onTalentClick);
-for (var i = 0; i < talentButtons.length; i++) {
-    talentButtons[i].addEventListener('mouseover', generateDescription)
-};
-for (var i = 0; i < talentButtons.length; i++) {
-    talentButtons[i].addEventListener('mouseout', hideDescription)
-};
+
+// Talent Decrement Event Listener to Determine Legal Decrements; Removes Context Menu //
+
 for (var i = 0; i < talentContainer.length; i++) {
     talentContainer[i].addEventListener('contextmenu', function (event) {
         event.preventDefault();
@@ -291,6 +296,8 @@ for (var i = 0; i < talentContainer.length; i++) {
         legalTalentCheck()
     })
 };
+
+// Legal Talent Click Checking Master Function //
 
 function onTalentClick(event) {
     const talentImage = event.target.parentNode
@@ -311,6 +318,8 @@ function onTalentClick(event) {
     }
 };
 
+// Point Increment on Click Function // 
+
 function incrementTreePoints(talentClicked) {
     talentClicked.currentRank = parseInt(talentClicked.currentRank) + 1
     currentTalent = talentTrees[talentClicked.pos[0]]
@@ -318,14 +327,20 @@ function incrementTreePoints(talentClicked) {
     currentTalent.dom.innerHTML = currentTalent.clicks;
 };
 
+// Point Decrement on Click Function //
+
 function decrementTotalPoints() {
     clicksRemain -= 1;
     DOM["talentPoints"].innerHTML = clicksRemain;
 };
 
+// Max Level Point Check Function //
+
 function canIncrementTalentRank(talentClicked) {
     return talentClicked.currentRank < talentClicked.maxRank;
 };
+
+// Talent Prerequisite Check Function // 
 
 function meetsPrereqRequirement(talentClicked) {
     if (talentClicked.preReq) {
@@ -336,6 +351,8 @@ function meetsPrereqRequirement(talentClicked) {
     };
     return true
 };
+
+// Required Pre-requisite Point Check Function //
 
 function hasRequiredTreePoints(talentClicked) {
     return talentClicked.reqPoints <= talentTrees[talentClicked.pos[0]].clicks;
@@ -353,6 +370,8 @@ function incrementTalentPoints(talentClicked) {
     checkIfTalentNoLongerAccessible()
 };
 
+// Initialize Legal Talents if All Legal Criteria is Met //
+
 function legalTalentInitialize() {
     const buttonWithPrereq = [...talentButtons].find(button => button.dataset.preReq == talentButton.dataset.name)
     if (talentButton.dataset.reqPoints == 0 && !buttonWithPrereq) {
@@ -366,19 +385,17 @@ function legalTalentInitialize() {
     };
 };
 
+// Function to Check if All Prerequisites are Met, Determines if a Talent Can be Legally Clicked //
+
 function legalTalentCheck() {
     talentButtons.forEach(function (talentButton) {
         if (talentButton.dataset.name != undefined) {
-
             const talentTreePoints = talentTrees[talentButton.dataset.pos[0]].clicks;
             const requiredTalentTreePoints = talentButton.dataset.reqPoints;
             const sufficientReqPoints = (requiredTalentTreePoints <= talentTreePoints);
-
             const preReqTalentName = talentButton.dataset.preReq;
             const hasTalentPoints = (talentButton.dataset.currentRank > 0)
-
             const isMaxRank = (talentButton.dataset.currentRank == talentButton.dataset.maxRank)
-
             let meetsPreReq = !preReqTalentName;
             if (sufficientReqPoints && !isMaxRank && !hasTalentPoints) {
                 if (!meetsPreReq) {
@@ -404,12 +421,16 @@ function legalTalentCheck() {
     });
 };
 
+// Function that Determines Max Rank and Prevents Overabundant Point Allocation //
+
 function talentReachedMaxRank(talentClicked) {
     if (talentClicked.dataset.currentRank == talentClicked.dataset.maxRank) {
         talentClicked.querySelector('.individualtalentpoints').classList.add("maxranktalent")
         talentClicked.querySelector('.talentimage').classList.add("maxranktalent")
     };
 };
+
+// Master Decrement Function to Determine if a Talent Can Legally Have its Points Reduced //
 
 function decrementTalentPoints(event) {
     const talentClicked = event.target.parentNode;
@@ -430,11 +451,16 @@ function decrementTalentPoints(event) {
     };
 };
 
+
+// Legal Decrement Check Master Function //
+
 function checkLegalDecrement(talentClicked) {
     if (talentedIsNotReliedOn(talentClicked) && wouldNotBreachTalentPointReqs(talentClicked)) {
         return true
     };
 };
+
+// Function to Check if the Talent is Used and Necessary for Other Talents Down the Tree Line //
 
 function talentedIsNotReliedOn(talentClicked) {
     if (talentClicked.dataset.name != undefined) {
@@ -445,13 +471,14 @@ function talentedIsNotReliedOn(talentClicked) {
     }; return true
 };
 
+// Function to Determine if Decrementing Current Talent Would Affect Legality of Other Talents//
+
 function wouldNotBreachTalentPointReqs(talentClicked) {
     if (talentClicked.dataset.name == undefined) {
         return false;
     };
     const treeButtons = [...talentButtons].filter(button => button.dataset.reqPoints != undefined && button.dataset.pos[0] == talentClicked.dataset.pos[0]),
         rowPoints = new Array();
-
     treeButtons.map(button => {
         return {
             row: button.dataset.reqPoints / 5,
@@ -463,18 +490,15 @@ function wouldNotBreachTalentPointReqs(talentClicked) {
         };
         rowPoints[talent.row] += parseInt(talent.points);
     });
-
     let lastRowWithPoints = 0;
     rowPoints.forEach((points, index) => {
         if (points != 0) {
             lastRowWithPoints = index;
         };
     });
-
     let valid = true,
         totalPointsSoFar = 0,
         rowDecrementedFrom = talentClicked.dataset.reqPoints / 5;
-
     for (let i = 0; i <= lastRowWithPoints; i++) {
         const pointsRequiredForRow = i * 5;
         let pointsAfterDecrement = totalPointsSoFar;
@@ -488,6 +512,8 @@ function wouldNotBreachTalentPointReqs(talentClicked) {
     };
     return valid;
 };
+
+// Function that Adjusts Color of Borders Based Upon Ranking Decrements //
 
 function decrementTalentBorderCheck(talentClicked) {
     if (talentClicked.dataset.currentRank > 0 && talentClicked.dataset.currentRank != talentClicked.dataset.maxRank) {
@@ -505,6 +531,8 @@ function decrementTalentBorderCheck(talentClicked) {
     checkIfTalentNoLongerAccessible()
 }
 
+// Function Determining Whether Talent is Still Legal After Decrements of Other Talents Occur //
+
 function checkIfTalentNoLongerAccessible() {
     talentButtons.forEach(function (talentButton) {
         if (talentButton.dataset.name != undefined) {
@@ -521,7 +549,17 @@ function checkIfTalentNoLongerAccessible() {
     });
 };
 
-// Talent Description Text Function //
+// Talent Description Text Functions //
+// Mouse Over and Mouse Out Event Listeners for Talent Description Boxes //
+
+for (var i = 0; i < talentButtons.length; i++) {
+    talentButtons[i].addEventListener('mouseover', generateDescription)
+};
+for (var i = 0; i < talentButtons.length; i++) {
+    talentButtons[i].addEventListener('mouseout', hideDescription)
+};
+
+// Talent Description Generation Function //
 
 function generateDescription(event) {
     const talentImage = event.target.parentNode
@@ -544,13 +582,15 @@ function generateDescription(event) {
     };
 };
 
+// Talent Description Obfuscation Function //
+
 function hideDescription(event) {
     if (event.target.parentNode.tagName.toLowerCase() == 'td') {
         document.querySelector(".tooltip").style.visibility = "hidden"
     }
 }
 
-// Talent Build Data Output Function //
+// Talent Build Data Output to Text Function //
 
 function talentBuildDataOuput(event, talentData) {
     if (event.parentNode.tagName.toLowerCase() == 'td') {
@@ -588,7 +628,8 @@ function translateURL() {
         currentClass = pathArray[2]
         if (document.getElementById(currentClass + 'btn') == null) {
             window.location.pathname = '/error'
-        }
+        };
+        document.getElementById("talentmenutext").innerHTML = currentClass.charAt(0).toUpperCase() + currentClass.slice(1);
         document.getElementById(currentClass + 'btn').dispatchEvent(new Event('click'));
         buttons(classTalentsDict[currentClass])
         talentsUsedCount = 51
@@ -616,8 +657,7 @@ function translateURL() {
                 }
                     talentReachedMaxRank(talentButtons[i])
             }
-        })
+        });
         DOM['talentOutput'].innerHTML = Object.values(talentBuildData).join(" ")
-        document.getElementById("talentmenutext").innerHTML = currentClass.charAt(0).toUpperCase() + currentClass.slice(1);;
-    }
-}
+    };
+};

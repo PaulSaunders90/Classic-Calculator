@@ -95,12 +95,12 @@
         background-size: contain;
     }
 
-    #menu:not(:target)>a:first-of-type, #menu:target>a:last-of-type {
+    a:first-of-type, a:last-of-type {
         opacity: 1;
         z-index: 1;
     }
 
-    #menu:not(:target)>.icon-plus:before, #menu:target>.icon-minus:before {
+    .icon-plus:before, .icon-minus:before {
         opacity: 1;
     }
 
@@ -136,39 +136,39 @@
             width: 60px;
             height: 60px;
         }
-        #menu:target>.menu-item:nth-child(3) {
+        .menu-item:nth-child(3) {
             transform: rotate(-20deg) translateY(-105px) rotate(20deg);
             transition-delay: 0.1s;
         }
-        #menu:target>.menu-item:nth-child(4) {
+        .menu-item:nth-child(4) {
             transform: rotate(-60deg) translateY(-125px) rotate(60deg);
             transition-delay: 0.1s;
         }
-        #menu:target>.menu-item:nth-child(5) {
+        .menu-item:nth-child(5) {
             transform: rotate(20deg) translateY(-105px) rotate(-20deg);
             transition-delay: 0.1s;
         }
-        #menu:target>.menu-item:nth-child(6) {
+        .menu-item:nth-child(6) {
             transform: rotate(60deg) translateY(-125px) rotate(300deg);
             transition-delay: 0.1s;
         }
-        #menu:target>.menu-item:nth-child(7) {
+        .menu-item:nth-child(7) {
             transform: rotate(100deg) translateY(-125px) rotate(260deg);
             transition-delay: 0.1s;
         }
-        #menu:target>.menu-item:nth-child(8) {
+        .menu-item:nth-child(8) {
             transform: rotate(140deg) translateY(-135px) rotate(220deg);
             transition-delay: 0.1s;
         }
-        #menu:target>.menu-item:nth-child(9) {
+        .menu-item:nth-child(9) {
             transform: rotate(180deg) translateY(-135px) rotate(180deg);
             transition-delay: 0.1s;
         }
-        #menu:target>.menu-item:nth-child(10) {
+        .menu-item:nth-child(10) {
             transform: rotate(220deg) translateY(-135px) rotate(140deg);
             transition-delay: 0.1s;
         }
-        #menu:target>.menu-item:nth-child(11) {
+        .menu-item:nth-child(11) {
             transform: rotate(260deg) translateY(-125px) rotate(100deg);
             transition-delay: 0.1s;
         }
@@ -182,39 +182,39 @@
             width: 80px;
             height: 80px;
         }
-        #menu:target>.menu-item:nth-child(3) {
+        .menu-item:nth-child(3) {
             transform: rotate(-20deg) translateY(-135px) rotate(20deg);
             transition-delay: 0.1s;
         }
-        #menu:target>.menu-item:nth-child(4) {
+        .menu-item:nth-child(4) {
             transform: rotate(-60deg) translateY(-150px) rotate(60deg);
             transition-delay: 0.1s;
         }
-        #menu:target>.menu-item:nth-child(5) {
+        .menu-item:nth-child(5) {
             transform: rotate(20deg) translateY(-135px) rotate(-20deg);
             transition-delay: 0.1s;
         }
-        #menu:target>.menu-item:nth-child(6) {
+        .menu-item:nth-child(6) {
             transform: rotate(60deg) translateY(-150px) rotate(300deg);
             transition-delay: 0.1s;
         }
-        #menu:target>.menu-item:nth-child(7) {
+        .menu-item:nth-child(7) {
             transform: rotate(100deg) translateY(-150px) rotate(260deg);
             transition-delay: 0.1s;
         }
-        #menu:target>.menu-item:nth-child(8) {
+        .menu-item:nth-child(8) {
             transform: rotate(140deg) translateY(-150px) rotate(220deg);
             transition-delay: 0.1s;
         }
-        #menu:target>.menu-item:nth-child(9) {
+        .menu-item:nth-child(9) {
             transform: rotate(180deg) translateY(-150px) rotate(180deg);
             transition-delay: 0.1s;
         }
-        #menu:target>.menu-item:nth-child(10) {
+        .menu-item:nth-child(10) {
             transform: rotate(220deg) translateY(-150px) rotate(140deg);
             transition-delay: 0.1s;
         }
-        #menu:target>.menu-item:nth-child(11) {
+        .menu-item:nth-child(11) {
             transform: rotate(260deg) translateY(-150px) rotate(100deg);
             transition-delay: 0.1s;
         }
@@ -370,33 +370,14 @@
         float: left;
     }
 
-    #headericon1 {
+    .iconcontainer{
         width: 50px;
         height: 30px;
+        margin-left: 10px;
         background-repeat: no-repeat;
     }
 
-    #headericon2 {
-        width: 50px;
-        height: 30px;
-        background-repeat: no-repeat;
-    }
-
-    #headericon3 {
-        width: 50px;
-        height: 30px;
-        background-repeat: no-repeat;
-    }
-
-    #talentpoints1 {
-        text-align: right;
-    }
-
-    #talentpoints2 {
-        text-align: right;
-    }
-
-    #talentpoints3 {
+    .treepoints{
         text-align: right;
     }
 
@@ -559,6 +540,7 @@
 
     #talentOutputContainer p{
         color: #ecb939;
+        padding: 5px;
     }
 
     .talentOutput {
