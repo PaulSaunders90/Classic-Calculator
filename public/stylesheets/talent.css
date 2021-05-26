@@ -1,5 +1,19 @@
     /* Talent Page Layout */
 
+    #scrollarrow{
+        display: none;
+        width: 30px;
+        height: 30px;
+        position: fixed;
+        top: 0;
+        z-index: 100;
+        background:url("/img/arrows/scroll-arrow.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        border: 2px solid #969696;
+        border-radius: 5px;
+    }
+
     /* Class Selection Menu */
 
     .character-button {
@@ -354,15 +368,14 @@
         height: 40px;
         width: 100%;
         color: #ecb939;
-        background-color: rgba(14, 26, 64, .8);
+        background-color: rgba(14, 26, 64, .9);
         align-items: center;
         display: inline-flex;
-        padding: 6px 0;
+        padding: 2px 0;
     }
 
     .talentheader p {
-        font-size: 28px;
-        margin-left: 10px;
+        font-size: 22px;
         width: 100%;
     }
 
@@ -372,10 +385,11 @@
     }
 
     .iconcontainer{
-        width: 50px;
-        height: 30px;
+        width: 35px;
+        height: 25px;
         margin-left: 10px;
         background-repeat: no-repeat;
+        background-size: contain;
     }
 
     .treepoints{
@@ -539,7 +553,7 @@
     #talentOutputContainer h1{
         text-align: center;
         color: white;
-        font-size: 25px;
+        font-size: 22px;
     }
 
     #talentOutputContainer p{

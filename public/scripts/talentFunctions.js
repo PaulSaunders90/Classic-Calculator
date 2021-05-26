@@ -44,7 +44,8 @@ const DOM = {
     talentPoints2: document.getElementById("talentpoints2"),
     talentPoints3: document.getElementById("talentpoints3"),
     talentOutput: document.getElementById("talentoutput").querySelector("p"),
-    talentMenuText: document.getElementById("talentmenutext")
+    talentMenuText: document.getElementById("talentmenutext"),
+    scrollArrow: document.getElementById("scrollarrow")
 };
 
 // Talent Tree Objects //
@@ -363,7 +364,7 @@ function hasRequiredTreePoints(talentClicked) {
 
 function incrementTalentPoints(talentClicked) {
     talentClicked.querySelector('.currenttalentpoints').innerHTML = talentClicked.dataset.currentRank;
-    if (talentClicked.querySelector('.individualtalentpoints').classList.contains("activetalentnopoints") != undefined && talentClicked.dataset.currentRank != 0){
+    if (talentClicked.querySelector('.individualtalentpoints').classList.contains("activetalentnopoints") != undefined && talentClicked.dataset.currentRank != 0) {
         talentClicked.querySelector('.individualtalentpoints').classList.remove("activetalentnopoints")
         talentClicked.querySelector('.individualtalentpoints').classList.add("talentwithpoints")
     }
@@ -404,7 +405,7 @@ function legalTalentCheck() {
                         talentButton.classList.add("activetalent")
                         talentButton.querySelector('.individualtalentpoints').classList.add("activetalentnopoints")
                         talentButton.querySelector('.talentimage').classList.add("activetalentimage")
-                    } else{
+                    } else {
                         talentButton.classList.remove("activetalent")
                     }
                 }
@@ -568,9 +569,9 @@ function generateDescription(event) {
         currentTreeTalentsArray = Object.values(classTalentsDict[currentClass][currentTalentTreeId].talents[0])
         currentTreeTalentsArray.forEach(function (talentData) {
             if (talentImage.dataset.name == talentData.name) {
-                if (event.pageX > (window.innerWidth * .5)){
+                if (event.pageX > (window.innerWidth * .5)) {
                     document.querySelector(".tooltip").style.left = (event.pageX - 175) + 'px'
-                } else{
+                } else {
                     document.querySelector(".tooltip").style.left = event.pageX + 'px'
                 }
                 document.querySelector(".tooltip").style.top = (event.pageY - 150) + 'px'
@@ -637,7 +638,7 @@ function translateURL() {
         talentValuesArray.forEach(function (talentValues, i) {
             if (talentButtons[i].dataset.name != undefined) {
                 talentButtons[i].dataset.currentRank = parseInt(talentValues)
-                if(talentButtons[i].dataset.currentRank > talentButtons[i].dataset.maxRank){
+                if (talentButtons[i].dataset.currentRank > talentButtons[i].dataset.maxRank) {
                     window.location.pathname = '/error'
                 }
                 talentButtons[i].querySelector('.currenttalentpoints').innerHTML = talentButtons[i].dataset.currentRank
@@ -652,12 +653,40 @@ function translateURL() {
                     talentBuildData[currentTalentData.name] = currentTalentData.description(talentButtons[i].dataset.currentRank);
                 }
                 legalTalentCheck()
-                if(talentButtons[i].dataset.currentRank != 0 && talentButtons[i].classList.contains("activetalent") == false){
+                if (talentButtons[i].dataset.currentRank != 0 && talentButtons[i].classList.contains("activetalent") == false) {
                     window.location.pathname = '/error'
                 }
-                    talentReachedMaxRank(talentButtons[i])
+                talentReachedMaxRank(talentButtons[i])
             }
         });
         DOM['talentOutput'].innerHTML = Object.values(talentBuildData).join(" ")
     };
 };
+
+// Scroll to Top Functions //
+// Scroll to Top on Arrow Click Function //
+
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+    DOM["scrollArrow"].style.display = "none";
+};
+
+DOM["scrollArrow"].addEventListener("click", scrollToTop);
+
+// Function to Make Arrow Visible After Scrolling Down //
+
+function checkScrollPosition(){
+    var windowPosition = window.scrollY
+    var visibleArrowPosition = DOM["talentPoints"].getBoundingClientRect().bottom
+    if(windowPosition >= visibleArrowPosition){
+        DOM["scrollArrow"].style.display = "block";
+    }
+    else{
+        DOM["scrollArrow"].style.display = "none";
+    };
+};
+
+window.addEventListener("scroll", checkScrollPosition);
