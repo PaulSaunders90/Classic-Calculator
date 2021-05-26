@@ -230,9 +230,10 @@
         margin-right: auto;
         color: #ecb939;
         text-align: center;
-        font-size: 20px;
+        font-size: 18px;
         z-index: 50;
-        background-color: rgba(2, 2, 2, 0.6);
+        background-color: rgba(2, 2, 2, 0.8);
+        border: 2px solid #969696;
         border-radius: 10px;
         pointer-events: none;
     }
@@ -247,13 +248,13 @@
         z-index: 50;
         text-align: center;
         border-radius: 5px;
-        border: 1px solid #d3d3d3;
+        border: 2px solid #969696;
     }
 
     .tooltip h1{
         color: white;
         padding: 5px;
-        font-size: 21px;
+        font-size: 17px;
     }
 
     .tooltip p{
@@ -271,11 +272,11 @@
         display: block;
         margin: 0 auto;
         text-align: center;
-        padding: 15px;
+        padding: 5px;
         background-color: rgba(14, 26, 64, .8);
         border-radius: 5px;
-        border: 1px solid #d3d3d3;
-        font-size: 30px;
+        border: 2px solid #969696;
+        font-size: 16px;
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     }
 
@@ -346,21 +347,21 @@
         background-position: center;
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
         border-radius: 5px;
-        border: 1px solid #d3d3d3;
+        border: 2px solid #969696;
     }
 
     .talentheader {
         height: 40px;
         width: 100%;
         color: #ecb939;
-        background-color: rgba(14, 26, 64, .6);
+        background-color: rgba(14, 26, 64, .8);
         align-items: center;
         display: inline-flex;
-        padding: 5px 0;
+        padding: 6px 0;
     }
 
     .talentheader p {
-        font-size: 30px;
+        font-size: 28px;
         margin-left: 10px;
         width: 100%;
     }
@@ -378,12 +379,14 @@
     }
 
     .treepoints{
-        text-align: right;
+        padding-right: 10px;
+        margin-left: 10px;
     }
 
     .table-borderless {
         height: 560px;
         width: 100%;
+        padding-bottom: 10px;
         -webkit-touch-callout: none;
         -webkit-user-select: none;
         -khtml-user-select: none;
@@ -404,6 +407,7 @@
     td .talentimage {
         background-repeat: no-repeat;
         background-position: center;
+        background-size: contain;
         height: 45px;
         width: auto;
     }
