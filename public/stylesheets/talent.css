@@ -6,8 +6,9 @@
         height: 30px;
         position: fixed;
         top: 0;
-        z-index: 100;
+        z-index: 150;
         background:url("/img/arrows/scroll-arrow.png");
+        background-color: rgb(14, 26, 64);
         background-size: contain;
         background-repeat: no-repeat;
         border: 2px solid #969696;
@@ -188,7 +189,7 @@
 
     @media(min-width: 320px) {
         #totaltalentpoints {
-            margin-top: 80px;
+            margin-top: 70px;
         }
     }
 
