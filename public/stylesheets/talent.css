@@ -449,6 +449,7 @@
     /* Talent Output Boxes */
 
     #talentOutputContainer {
+        display: none;
         background-color: rgba(14, 26, 64, .8);
         width: 100%;
         height: auto;

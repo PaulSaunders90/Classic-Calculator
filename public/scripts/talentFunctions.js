@@ -115,7 +115,6 @@ function displayCharacter(e) {
         DOM["talentPoints3"].innerHTML = talentTrees[2].clicks;
         buttons(classTalents);
         displayTalentArrows();
-        document.getElementById("reportbug").style.display = "block";
     };
 };
 
@@ -597,19 +596,32 @@ function talentBuildDataOuput(event, talentData) {
     if (event.parentNode.tagName.toLowerCase() == 'td') {
         if (event.parentNode.dataset.currentRank != 0) {
             if (event.parentNode.dataset.name == talentData.name && event.parentNode.dataset.name != talentBuildData.name) {
-                talentBuildData[talentData.name] = talentData.description(event.parentNode.dataset.currentRank);
+                talentBuildData[talentData.name] = "<li>" + talentData.description(event.parentNode.dataset.currentRank) + "</li>";
             };
             if (event.parentNode.dataset.name == talentBuildData.name) {
-                talentBuildData[talentData.name] = talentData.description(event.parentNode.dataset.currentRank);
+                talentBuildData[talentData.name] = "<li>" + talentData.description(event.parentNode.dataset.currentRank) + "</li>";
             };
-            DOM['talentOutput'].innerHTML = Object.values(talentBuildData).join(" ")
+            DOM['talentOutput'].innerHTML = Object.values(talentBuildData).join(" ");
         };
         if (event.parentNode.dataset.name == talentData.name && event.parentNode.dataset.currentRank == 0) {
             delete talentBuildData[event.parentNode.dataset.name]
-            DOM['talentOutput'].innerHTML = Object.values(talentBuildData).join(" ")
+            DOM['talentOutput'].innerHTML = Object.values(talentBuildData).join(" ");
         };
     };
 };
+
+// Talent Output Text Display Check //
+
+function displayTalentOutput() {
+    var remainingClicks = parseInt(DOM["talentPoints"].innerHTML)
+    if (remainingClicks < 51) {
+        DOM['talentOutputContainer'].style.display = "block"
+    } else {
+        DOM['talentOutputContainer'].style.display = "none"
+    }
+}
+
+window.addEventListener('click', displayTalentOutput);
 
 // Talent Build URL Tracker Function///
 
@@ -650,13 +662,16 @@ function translateURL() {
                 currentTalent.dom.innerHTML = currentTalent.clicks;
                 let currentTalentData = classTalentsDict[currentClass][talentButtons[i].parentNode.parentNode.dataset.id].talents[0][talentButtons[i].dataset.name];
                 if (currentTalentData && talentButtons[i].dataset.currentRank != 0) {
-                    talentBuildData[currentTalentData.name] = currentTalentData.description(talentButtons[i].dataset.currentRank);
+                    talentBuildData[currentTalentData.name] = "<li>" + currentTalentData.description(talentButtons[i].dataset.currentRank) + "</li>";
                 }
                 legalTalentCheck()
                 if (talentButtons[i].dataset.currentRank != 0 && talentButtons[i].classList.contains("activetalent") == false) {
                     window.location.pathname = '/error'
                 }
                 talentReachedMaxRank(talentButtons[i])
+            }
+            if (talentsUsedCount < 51) {
+                DOM['talentOutputContainer'].style.display = "block"
             }
         });
         DOM['talentOutput'].innerHTML = Object.values(talentBuildData).join(" ")
@@ -678,13 +693,13 @@ DOM["scrollArrow"].addEventListener("click", scrollToTop);
 
 // Function to Make Arrow Visible After Scrolling Down //
 
-function checkScrollPosition(){
+function checkScrollPosition() {
     var windowPosition = window.scrollY
     var visibleArrowPosition = DOM["talentPoints"].getBoundingClientRect().bottom
-    if(windowPosition >= visibleArrowPosition){
+    if (windowPosition >= visibleArrowPosition) {
         DOM["scrollArrow"].style.display = "block";
     }
-    else{
+    else {
         DOM["scrollArrow"].style.display = "none";
     };
 };
