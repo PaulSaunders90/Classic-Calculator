@@ -610,7 +610,7 @@ function talentBuildDataOuput(event, talentData) {
     };
 };
 
-// Talent Output Text Display Check //
+// Talent Output Text Display Checks //
 
 function displayTalentOutput() {
     var remainingClicks = parseInt(DOM["talentPoints"].innerHTML)
@@ -621,7 +621,17 @@ function displayTalentOutput() {
     }
 }
 
+function removeTalentOutputOnDecrement() {
+    var remainingClicks = parseInt(DOM["talentPoints"].innerHTML)
+    if (remainingClicks == 51) {
+        DOM['talentOutputContainer'].style.display = "none"
+    } else {
+        DOM['talentOutputContainer'].style.display = "block"
+    }
+}
+
 window.addEventListener('click', displayTalentOutput);
+window.addEventListener('contextmenu', removeTalentOutputOnDecrement);
 
 // Talent Build URL Tracker Function///
 
