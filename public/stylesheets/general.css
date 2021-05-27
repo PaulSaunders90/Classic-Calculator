@@ -13,46 +13,6 @@ html, body {
     padding: 0 20px;
 }
 
-/* Report Bug Feature */
-
-#reportbug {
-    background-color: #1c1c1c;
-    margin-top: 20px;
-    text-align: center;
-    padding: 10px;
-}
-
-#reportbug div a {
-    margin-top: 25px;
-    text-decoration: none;
-}
-
-#reportbug span {
-    height: 100px;
-    width: 125px;
-    display: inline-block;
-    background-image: url('/img/error/mailbox.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-#reportbug h5 {
-    color: #ecb939;
-}
-
-@media(min-width: 320px) {
-    #reportbug h5 {
-        font-size: 13px;
-    }
-}
-
-@media(min-width: 770px) {
-    #reportbug h5 {
-        font-size: 20px;
-    }
-}
-
 /* Footer Text */
 
 .footer{
