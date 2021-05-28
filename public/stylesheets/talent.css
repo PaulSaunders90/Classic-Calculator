@@ -173,12 +173,33 @@
     /* Talent Tree Layout */
 
     /* Talent Tree Box */
+    /* Talent Data Row */
+
+    #talentdatarow{
+        width: 100%;
+        display: inline-flex;
+        justify-content: center;    
+    }
+
+    #copylinkbutton{
+        height: auto;
+        color: #ecb939;
+        display: block;
+        padding: 5px;
+        text-align: center;
+        font-size: 16px;
+        background-color: rgba(14, 26, 64, .8);
+        border: 2px solid #969696;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        border-radius: 5px;
+        cursor: pointer;
+    }
 
     #totaltalentpoints {
         height: auto;
         display: block;
-        margin: 0 auto;
         text-align: center;
+        margin: 0 20px;
         padding: 5px;
         background-color: rgba(14, 26, 64, .8);
         border-radius: 5px;
@@ -190,12 +211,33 @@
     @media(min-width: 320px) {
         #totaltalentpoints {
             margin-top: 50px;
+            width: 45%;
+        }
+        #copylinkbutton{
+            margin-top: 50px;
+            width: 10%;
+        }
+        #treeresetbutton{
+            margin-top: 50px;
+            width: 10%;
+        }
+    }
+
+    @media(min-width: 750px) {
+        #totaltalentpoints {
+            width: 25%;
         }
     }
 
     @media(min-width: 800px) {
         #totaltalentpoints {
-            margin-top: 0px;
+            margin-top: 0;
+        }
+        #copylinkbutton{
+            margin-top: 0;
+        }
+        #treeresetbutton{
+            margin-top: 0;
         }
     }
 
@@ -207,17 +249,22 @@
         color: white;
     }
 
-    @media(min-width: 320px) {
-        #totaltalentpoints {
-            width: 50%;
-        }
+    #treeresetbutton{
+        color: #ecb939;
+        height: auto;
+        display: block;
+        padding: 5px;
+        text-align: center;
+        font-size: 16px;
+        font-family: 'Oswald', sans-serif;    
+        background-color: rgba(14, 26, 64, .8);
+        border: 2px solid #969696;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        border-radius: 5px;
+        cursor: pointer;
     }
 
-    @media(min-width: 750px) {
-        #totaltalentpoints {
-            width: 25%;
-        }
-    }
+    /* Talent Tree  */
 
     .talentcontainer {
         width: 100%;

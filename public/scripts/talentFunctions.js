@@ -45,7 +45,9 @@ const DOM = {
     talentPoints3: document.getElementById("talentpoints3"),
     talentOutput: document.getElementById("talentoutput").querySelector("p"),
     talentMenuText: document.getElementById("talentmenutext"),
-    scrollArrow: document.getElementById("scrollarrow")
+    scrollArrow: document.getElementById("scrollarrow"),
+    copyBuildButton: document.getElementById("copylinkbutton"),
+    resetButton: document.getElementById("treeresetbutton")
 };
 
 // Talent Tree Objects //
@@ -715,3 +717,33 @@ function checkScrollPosition() {
 };
 
 window.addEventListener("scroll", checkScrollPosition);
+
+// Copy Build Button Function //
+
+function copyBuild(){
+   var urlBuild = window.location.href;
+   var copyInput = document.createElement("input");
+   copyInput.className = "urlInput";
+   document.body.append(copyInput);
+   copyInput.value = urlBuild;
+   copyInput.select();
+   document.execCommand("copy");
+   document.body.removeChild(copyInput);
+   document.querySelector(".tooltip").style.visibility = "visible";
+   document.querySelector(".tooltip").innerHTML = "<h1>URL Copied!</h1>" ;
+}
+
+function hideCopyBuildNotification(){
+    document.querySelector(".tooltip").style.visibility = "hidden";
+}
+
+DOM["copyBuildButton"].addEventListener('click', copyBuild);
+DOM["copyBuildButton"].addEventListener('mouseout', hideCopyBuildNotification)
+
+// Reset Button Function //
+
+function talentReset(e){
+    displayCharacter(e)
+}
+
+DOM["resetButton"].addEventListener('click', talentReset);
