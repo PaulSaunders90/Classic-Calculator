@@ -7,6 +7,7 @@ var clickState = false,
     clicksRemain = 51,
     clickedTalent = 0,
     talentBuildData = {},
+    urlData = "",
     menuClicks = 0;
 
 // Talent Page Dictionary //
@@ -659,6 +660,7 @@ function translateURL() {
         buttons(classTalentsDict[currentClass])
         talentsUsedCount = 51
         talentValuesArray = Array.from(pathArray[3])
+        urlData += "/talent/" + currentClass + "/";
         talentValuesArray.forEach(function (talentValues, i) {
             if (talentButtons[i].dataset.name != undefined) {
                 talentButtons[i].dataset.currentRank = parseInt(talentValues)
@@ -682,6 +684,7 @@ function translateURL() {
                 }
                 talentReachedMaxRank(talentButtons[i])
             }
+            urlData += talentButtons[i].dataset.currentRank;
             if (talentsUsedCount < 51) {
                 DOM['talentOutputContainer'].style.display = "block"
             }
@@ -689,6 +692,16 @@ function translateURL() {
         DOM['talentOutput'].innerHTML = Object.values(talentBuildData).join(" ")
     };
 };
+
+
+// Propagate URL after Translation Function //
+
+function propagateURL(){
+    console.log(urlData)
+    history.replaceState("", "Classic Calculator", urlData);
+};
+
+window.addEventListener("load", propagateURL);
 
 // Scroll to Top Functions //
 // Scroll to Top on Arrow Click Function //

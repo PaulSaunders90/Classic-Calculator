@@ -204,7 +204,7 @@ var priestTalents = [{
       name: "Healing Focus",
       pos: "1a1",
       icon: icons["hFocus"],
-      maxRank: 5,
+      maxRank: 2,
       reqPoints: 0,
       description: talentText`Gives you a ${[
         35,
