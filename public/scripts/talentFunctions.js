@@ -118,6 +118,7 @@ function displayCharacter(e) {
         DOM["talentPoints3"].innerHTML = talentTrees[2].clicks;
         buttons(classTalents);
         displayTalentArrows();
+        unselectedClassGrayingOut(e)
     };
 };
 
@@ -240,6 +241,18 @@ function displayTalentArrows() {
             };
         };
     });
+};
+
+//  //
+
+function unselectedClassGrayingOut(e){
+    var classButtons = document.getElementsByClassName("character-button")
+    var selectedClass = e.target.getAttribute("data-character");
+    var selectedButton = document.getElementById(selectedClass + "btn")
+    for(i = 0; i < classButtons.length; i++){
+        classButtons[i].style.filter = "grayscale(100%)";
+    }
+    selectedButton.style.filter = "none";
 };
 
 // Arrow Activation or Deactivation Based Upon Talent Points Function //
@@ -696,8 +709,7 @@ function translateURL() {
 
 // Propagate URL after Translation Function //
 
-function propagateURL(){
-    console.log(urlData)
+function propagateURL() {
     history.replaceState("", "Classic Calculator", urlData);
 };
 
@@ -733,20 +745,20 @@ window.addEventListener("scroll", checkScrollPosition);
 
 // Copy Build Button Function //
 
-function copyBuild(){
-   var urlBuild = window.location.href;
-   var copyInput = document.createElement("input");
-   copyInput.className = "urlInput";
-   document.body.append(copyInput);
-   copyInput.value = urlBuild;
-   copyInput.select();
-   document.execCommand("copy");
-   document.body.removeChild(copyInput);
-   document.querySelector(".tooltip").style.visibility = "visible";
-   document.querySelector(".tooltip").innerHTML = "<h1>URL Copied!</h1>" ;
+function copyBuild() {
+    var urlBuild = window.location.href;
+    var copyInput = document.createElement("input");
+    copyInput.className = "urlInput";
+    document.body.append(copyInput);
+    copyInput.value = urlBuild;
+    copyInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(copyInput);
+    document.querySelector(".tooltip").style.visibility = "visible";
+    document.querySelector(".tooltip").innerHTML = "<h1>URL Copied!</h1>";
 }
 
-function hideCopyBuildNotification(){
+function hideCopyBuildNotification() {
     document.querySelector(".tooltip").style.visibility = "hidden";
 }
 
@@ -755,7 +767,7 @@ DOM["copyBuildButton"].addEventListener('mouseout', hideCopyBuildNotification)
 
 // Reset Button Function //
 
-function talentReset(e){
+function talentReset(e) {
     displayCharacter(e)
 }
 
