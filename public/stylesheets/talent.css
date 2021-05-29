@@ -151,30 +151,20 @@
         justify-content: center;
     }
 
-    #copylinkbutton{
-        height: auto;
+    .treebutton{
         color: #ecb939;
-        padding: 10px;
+        padding: 5px;
         font-size: 16px;
+        font-family: 'Oswald', sans-serif;
         background-color: rgba(14, 26, 64, .8);
         border: 2px solid #969696;
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
         border-radius: 5px;
-        cursor: pointer;
+        cursor: pointer;   
     }
 
     #treeresetbutton{
-        color: #ecb939;
-        height: auto;
-        padding: 10px;
         margin-right: 20%;
-        font-size: 16px;
-        font-family: 'Oswald', sans-serif;    
-        background-color: rgba(14, 26, 64, .8);
-        border: 2px solid #969696;
-        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-        border-radius: 5px;
-        cursor: pointer;
     }
 
     #totaltalentpoints {

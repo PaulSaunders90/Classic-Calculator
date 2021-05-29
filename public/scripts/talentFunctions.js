@@ -640,15 +640,15 @@ function generateDescription(event) {
         currentTreeTalentsArray = Object.values(classTalentsDict[currentClass][currentTalentTreeId].talents[0])
         currentTreeTalentsArray.forEach(function (talentData) {
             if (talentImage.dataset.name == talentData.name) {
+                DOM["toolTip"].innerHTML = "<h1>" + talentData.name + "</h1>" + "\n" + "<p>" + talentData.description(talentImage.dataset.currentRank) + "</p>";
                 if (event.pageX > (window.innerWidth * .5)) {
-                    DOM["toolTip"].style.left = (talentImage.getBoundingClientRect().left - 60) + "px";
+                    DOM["toolTip"].style.left = (talentImage.getBoundingClientRect().left - 125) + "px";
                 } else {
                     DOM["toolTip"].style.left = (talentImage.getBoundingClientRect().left + 30) + "px";
                 }
-                DOM["toolTip"].style.top = (talentImage.getBoundingClientRect().top - DOM["toolTip"].offsetHeight) + "px";
+                DOM["toolTip"].style.top = (event.pageY - 30 ) + "px";
                 DOM["toolTip"].style.width = "150px";
                 DOM["toolTip"].style.visibility = "visible";
-                DOM["toolTip"].innerHTML = "<h1>" + talentData.name + "</h1>" + "\n" + "<p>" + talentData.description(talentImage.dataset.currentRank) + "</p>";
                 talentBuildDataOuput(event.target, talentData)
             };
         });
