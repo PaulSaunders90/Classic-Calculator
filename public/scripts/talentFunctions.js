@@ -646,7 +646,7 @@ function generateDescription(event) {
                 if (event.pageX > (window.innerWidth * .5)) {
                     DOM["toolTip"].style.left = (talentImage.getBoundingClientRect().left - 125) + "px";
                 } else {
-                    DOM["toolTip"].style.left = (talentImage.getBoundingClientRect().left + 30) + "px";
+                    DOM["toolTip"].style.left = (talentImage.getBoundingClientRect().left + 50) + "px";
                 }
                 DOM["toolTip"].style.top = (event.pageY - 30 ) + "px";
                 DOM["toolTip"].style.width = "150px";
