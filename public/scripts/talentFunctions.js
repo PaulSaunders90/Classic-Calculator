@@ -640,8 +640,9 @@ function generateDescription(event) {
         currentTreeTalentsArray = Object.values(classTalentsDict[currentClass][currentTalentTreeId].talents[0])
         currentTreeTalentsArray.forEach(function (talentData) {
             if (talentImage.dataset.name == talentData.name) {
-                DOM["toolTip"].style.left = '400px'
-                DOM["toolTip"].style.top = '100px'
+                DOM["toolTip"].style.top = "0";
+                DOM["toolTip"].style.left = "0";
+                DOM["toolTip"].style.position = "fixed";
                 DOM["toolTip"].style.position = "fixed";
                 DOM["toolTip"].style.width = "150px";
                 DOM["toolTip"].style.visibility = "visible";
