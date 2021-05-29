@@ -23,6 +23,7 @@
         height: 50px;
         border: 2px solid #969696;
         cursor: pointer;
+        transition: .5s;
     }
 
     #warriorbtn {
@@ -89,7 +90,7 @@
         width: 100px;
         margin: 10px auto;
         text-align: center;
-        color: #ecb939;
+        color: #FFF;
         text-align: center;
         font-size: 18px;
         z-index: 50;
@@ -112,12 +113,6 @@
     .menu-item {
         display: inline-block;
         line-height: 5px;
-        transition: .5s;
-    }
-
-    .menu-item:hover {
-        opacity: 0.5;
-        box-shadow: 0 5px 10px black;
     }
 
     .tooltip {
@@ -152,14 +147,14 @@
     #talentdatarow{
         width: 100%;
         display: inline-flex;
-        justify-content: center;    
+        justify-content: space-evenly;    
     }
 
     #copylinkbutton{
         height: auto;
         color: #ecb939;
         display: block;
-        padding: 5px;
+        padding: 10px;
         text-align: center;
         font-size: 16px;
         background-color: rgba(14, 26, 64, .8);
@@ -169,68 +164,11 @@
         cursor: pointer;
     }
 
-    #totaltalentpoints {
-        height: auto;
-        display: block;
-        text-align: center;
-        margin: 0 20px;
-        padding: 5px;
-        background-color: rgba(14, 26, 64, .8);
-        border: 2px solid #969696;
-        font-size: 16px;
-        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-        -webkit-touch-callout: none; 
-        -webkit-user-select: none; 
-         -khtml-user-select: none; 
-           -moz-user-select: none; 
-            -ms-user-select: none; 
-                user-select: none
-    }
-
-    @media(min-width: 320px) {
-        #totaltalentpoints {
-            margin-top: 50px;
-            width: 45%;
-        }
-        #copylinkbutton{
-            margin-top: 50px;
-        }
-        #treeresetbutton{
-            margin-top: 50px;
-        }
-    }
-
-    @media(min-width: 750px) {
-        #totaltalentpoints {
-            width: 25%;
-        }
-    }
-
-    @media(min-width: 800px) {
-        #totaltalentpoints {
-            margin-top: 0;
-        }
-        #copylinkbutton{
-            margin-top: 0;
-        }
-        #treeresetbutton{
-            margin-top: 0;
-        }
-    }
-
-    #totaltalentpoints h2{
-        color: #ecb939;
-    }
-
-    #talentpoints{
-        color: white;
-    }
-
     #treeresetbutton{
         color: #ecb939;
         height: auto;
         display: block;
-        padding: 5px;
+        padding: 10px;
         text-align: center;
         font-size: 16px;
         font-family: 'Oswald', sans-serif;    
@@ -241,11 +179,27 @@
         cursor: pointer;
     }
 
+    #totaltalentpoints {
+        height: auto;
+        padding: 10px;
+        font-size: 16px;
+        -webkit-touch-callout: none; 
+        -webkit-user-select: none; 
+         -khtml-user-select: none; 
+           -moz-user-select: none; 
+            -ms-user-select: none; 
+                user-select: none
+    }
+
+    #totaltalentpoints h2{
+        color: #FFF;
+    }
+
     /* Talent Tree  */
 
     .talentcontainer {
         width: 100%;
-        margin-top: 15px;
+        margin-top: 5px;
     }
 
     @media(min-width: 320px) {
@@ -296,7 +250,7 @@
     .talentheader {
         height: 30px;
         width: 100%;
-        color: #ecb939;
+        color: #FFF;
         background-color: rgba(14, 26, 64, .8);
         align-items: center;
         justify-content: center;

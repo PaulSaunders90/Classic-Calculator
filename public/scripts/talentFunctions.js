@@ -248,9 +248,13 @@ function displayTalentArrows() {
 // Class Selection Button Functions //
 // Class Button Mouseover Class Name Display Function //
 
-function displayClassName(e){
+function displayClassName(e) {
     var selectedClass = e.target.getAttribute("data-character");
-    DOM["toolTip"].style.left = (e.pageX + 30)  + 'px';
+    if (e.pageX > (window.innerWidth * .5)) {
+        DOM["toolTip"].style.left = (e.pageX - 60) + 'px'
+    } else {
+        DOM["toolTip"].style.left = (e.pageX + 30) + 'px';
+    };
     DOM["toolTip"].style.top = e.pageY + 'px';
     DOM["toolTip"].style.width = "50px";
     DOM["toolTip"].style.visibility = "visible";
@@ -260,24 +264,51 @@ function displayClassName(e){
 
 // Class Button Mouseout Class Name Display Removal Function//
 
-function hideClassName(){
+function hideClassName() {
     DOM["toolTip"].style.visibility = "hidden";
 }
 
-for(i = 0; i < DOM["classButtons"].length; i++){
+for (i = 0; i < DOM["classButtons"].length; i++) {
     DOM["classButtons"][i].addEventListener("mouseover", displayClassName)
     DOM["classButtons"][i].addEventListener("mouseout", hideClassName)
 };
 
 // Unselected Class Grey Filter Application Function //
 
-function unselectedClassGrayingOut(e){
-    var selectedClass = e.target.getAttribute("data-character");
-    var selectedButton = document.getElementById(selectedClass + "btn")
-    for(i = 0; i < DOM["classButtons"].length; i++){
-        DOM["classButtons"][i].style.filter = "grayscale(100%)";
-    }
-    selectedButton.style.filter = "none";
+function unselectedClassGrayingOut(e) {
+    if (e.target.getAttribute("data-character") != null) {
+        var selectedClass = e.target.getAttribute("data-character");
+        var selectedButton = document.getElementById(selectedClass + "btn")
+        for (i = 0; i < DOM["classButtons"].length; i++) {
+            DOM["classButtons"][i].style.filter = "grayscale(100%)";
+        }
+        selectedButton.style.filter = "none";
+    };
+};
+
+// Hover Functions for Class Button Functions //
+
+function classButtonMouseOverFilterRemoval(e) {
+    if (e.target.getAttribute("data-character") != null) {
+        var selectedClass = e.target.getAttribute("data-character");
+        var selectedButton = document.getElementById(selectedClass + "btn")
+        selectedButton.style.filter = "none";
+    };
+};
+
+function classButtonMouseOut(e) {
+    if (e.target.getAttribute("data-character") != null) {
+        var selectedClass = e.target.getAttribute("data-character");
+        var selectedButton = document.getElementById(selectedClass + "btn")
+        var currentClass = document.getElementById(window.location.pathname.split("/")[2] + "btn")
+        selectedButton.style.filter = "grayscale(100%)";
+        currentClass.style.filter = "none";
+    };
+};
+
+for (i = 0; i < DOM["classButtons"].length; i++) {
+    DOM["classButtons"][i].addEventListener("mouseover", classButtonMouseOverFilterRemoval)
+    DOM["classButtons"][i].addEventListener("mouseout", classButtonMouseOut)
 };
 
 // Arrow Activation or Deactivation Based Upon Talent Points Function //
@@ -609,15 +640,12 @@ function generateDescription(event) {
         currentTreeTalentsArray = Object.values(classTalentsDict[currentClass][currentTalentTreeId].talents[0])
         currentTreeTalentsArray.forEach(function (talentData) {
             if (talentImage.dataset.name == talentData.name) {
-                if (event.pageX > (window.innerWidth * .5)) {
-                    DOM["toolTip"].style.left = (event.pageX - 125) + 'px'
-                } else {
-                    DOM["toolTip"].style.left = event.pageX + 'px'
-                }
-                DOM["toolTip"].style.top = (event.pageY - 150) + 'px'        
+                DOM["toolTip"].style.left = '400px'
+                DOM["toolTip"].style.top = '100px'
+                DOM["toolTip"].style.position = "fixed";
                 DOM["toolTip"].style.width = "150px";
-                DOM["toolTip"].style.visibility = "visible"
-                DOM["toolTip"].innerHTML = "<h1>" + talentData.name + "</h1>" + "\n" + "<p>" + talentData.description(talentImage.dataset.currentRank) + "</p>"
+                DOM["toolTip"].style.visibility = "visible";
+                DOM["toolTip"].innerHTML = "<h1>" + talentData.name + "</h1>" + "\n" + "<p>" + talentData.description(talentImage.dataset.currentRank) + "</p>";
                 talentBuildDataOuput(event.target, talentData)
             };
         });
