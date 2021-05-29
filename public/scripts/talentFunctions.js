@@ -48,7 +48,9 @@ const DOM = {
     talentMenuText: document.getElementById("talentmenutext"),
     scrollArrow: document.getElementById("scrollarrow"),
     copyBuildButton: document.getElementById("copylinkbutton"),
-    resetButton: document.getElementById("treeresetbutton")
+    resetButton: document.getElementById("treeresetbutton"),
+    toolTip: document.querySelector(".tooltip"),
+    classButtons: document.getElementsByClassName("character-button")
 };
 
 // Talent Tree Objects //
@@ -243,14 +245,37 @@ function displayTalentArrows() {
     });
 };
 
-//  //
+// Class Selection Button Functions //
+// Class Button Mouseover Class Name Display Function //
+
+function displayClassName(e){
+    var selectedClass = e.target.getAttribute("data-character");
+    DOM["toolTip"].style.left = (e.pageX + 30)  + 'px';
+    DOM["toolTip"].style.top = e.pageY + 'px';
+    DOM["toolTip"].style.width = "50px";
+    DOM["toolTip"].style.visibility = "visible";
+    DOM["toolTip"].innerHTML = "<p>" + selectedClass.charAt(0).toUpperCase() + selectedClass.slice(1) + "<p>";
+};
+
+
+// Class Button Mouseout Class Name Display Removal Function//
+
+function hideClassName(){
+    DOM["toolTip"].style.visibility = "hidden";
+}
+
+for(i = 0; i < DOM["classButtons"].length; i++){
+    DOM["classButtons"][i].addEventListener("mouseover", displayClassName)
+    DOM["classButtons"][i].addEventListener("mouseout", hideClassName)
+};
+
+// Unselected Class Grey Filter Application Function //
 
 function unselectedClassGrayingOut(e){
-    var classButtons = document.getElementsByClassName("character-button")
     var selectedClass = e.target.getAttribute("data-character");
     var selectedButton = document.getElementById(selectedClass + "btn")
-    for(i = 0; i < classButtons.length; i++){
-        classButtons[i].style.filter = "grayscale(100%)";
+    for(i = 0; i < DOM["classButtons"].length; i++){
+        DOM["classButtons"][i].style.filter = "grayscale(100%)";
     }
     selectedButton.style.filter = "none";
 };
@@ -585,13 +610,14 @@ function generateDescription(event) {
         currentTreeTalentsArray.forEach(function (talentData) {
             if (talentImage.dataset.name == talentData.name) {
                 if (event.pageX > (window.innerWidth * .5)) {
-                    document.querySelector(".tooltip").style.left = (event.pageX - 175) + 'px'
+                    DOM["toolTip"].style.left = (event.pageX - 125) + 'px'
                 } else {
-                    document.querySelector(".tooltip").style.left = event.pageX + 'px'
+                    DOM["toolTip"].style.left = event.pageX + 'px'
                 }
-                document.querySelector(".tooltip").style.top = (event.pageY - 150) + 'px'
-                document.querySelector(".tooltip").style.visibility = "visible"
-                document.querySelector(".tooltip").innerHTML = "<h1>" + talentData.name + "</h1>" + "\n" + "<p>" + talentData.description(talentImage.dataset.currentRank) + "</p>"
+                DOM["toolTip"].style.top = (event.pageY - 150) + 'px'        
+                DOM["toolTip"].style.width = "150px";
+                DOM["toolTip"].style.visibility = "visible"
+                DOM["toolTip"].innerHTML = "<h1>" + talentData.name + "</h1>" + "\n" + "<p>" + talentData.description(talentImage.dataset.currentRank) + "</p>"
                 talentBuildDataOuput(event.target, talentData)
             };
         });
@@ -602,7 +628,7 @@ function generateDescription(event) {
 
 function hideDescription(event) {
     if (event.target.parentNode.tagName.toLowerCase() == 'td') {
-        document.querySelector(".tooltip").style.visibility = "hidden"
+        DOM["toolTip"].style.visibility = "hidden"
     }
 }
 
@@ -754,8 +780,8 @@ function copyBuild() {
     copyInput.select();
     document.execCommand("copy");
     document.body.removeChild(copyInput);
-    document.querySelector(".tooltip").style.visibility = "visible";
-    document.querySelector(".tooltip").innerHTML = "<h1>URL Copied!</h1>";
+    DOM["toolTip"].style.visibility = "visible";
+    DOM["toolTip"].innerHTML = "<h1>URL Copied!</h1>";
 }
 
 function hideCopyBuildNotification() {

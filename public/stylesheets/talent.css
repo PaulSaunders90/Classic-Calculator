@@ -82,7 +82,7 @@
     .menucontainer {
         position: relative;
         width: 100%;
-        height: 100px;
+        margin-bottom: 15px;
     }
 
     #talentmenutext {
@@ -109,15 +109,6 @@
         list-style: none;
     }
 
-    a:first-of-type, a:last-of-type {
-        opacity: 1;
-        z-index: 1;
-    }
-
-    .icon-plus:before, .icon-minus:before {
-        opacity: 1;
-    }
-
     .menu-item {
         display: inline-block;
         line-height: 5px;
@@ -129,15 +120,9 @@
         box-shadow: 0 5px 10px black;
     }
 
-    .menu-item a {
-        position: relative;
-        text-decoration: none;
-    }
-
     .tooltip {
         visibility: hidden;
         position: absolute;
-        width: 200px;
         height: auto;
         background-color: rgba(14, 26, 64, 0.8);
         opacity: 1;
@@ -209,11 +194,9 @@
         }
         #copylinkbutton{
             margin-top: 50px;
-            width: 10%;
         }
         #treeresetbutton{
             margin-top: 50px;
-            width: 10%;
         }
     }
 
