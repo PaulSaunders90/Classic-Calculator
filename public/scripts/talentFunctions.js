@@ -250,15 +250,16 @@ function displayTalentArrows() {
 
 function displayClassName(e) {
     var selectedClass = e.target.getAttribute("data-character");
+    DOM["toolTip"].innerHTML = "<p>" + selectedClass.charAt(0).toUpperCase() + selectedClass.slice(1) + "<p>";
     if (e.pageX > (window.innerWidth * .5)) {
         DOM["toolTip"].style.left = (e.pageX - 60) + 'px'
     } else {
         DOM["toolTip"].style.left = (e.pageX + 30) + 'px';
     };
     DOM["toolTip"].style.top = e.pageY + 'px';
+    DOM["toolTip"].style.height = "25px";
     DOM["toolTip"].style.width = "50px";
     DOM["toolTip"].style.visibility = "visible";
-    DOM["toolTip"].innerHTML = "<p>" + selectedClass.charAt(0).toUpperCase() + selectedClass.slice(1) + "<p>";
 };
 
 
@@ -266,6 +267,7 @@ function displayClassName(e) {
 
 function hideClassName() {
     DOM["toolTip"].style.visibility = "hidden";
+    DOM["toolTip"].style.height = "";
 }
 
 for (i = 0; i < DOM["classButtons"].length; i++) {
@@ -814,10 +816,10 @@ function copyBuild() {
     copyInput.select();
     document.execCommand("copy");
     document.body.removeChild(copyInput);
+    DOM["toolTip"].innerHTML = "<h1>URL Copied!</h1>";
     DOM["toolTip"].style.left = (DOM["copyBuildButton"].getBoundingClientRect().left + 30) + "px";
     DOM["toolTip"].style.top = (DOM["copyBuildButton"].getBoundingClientRect().top + 30) + "px";
     DOM["toolTip"].style.visibility = "visible";
-    DOM["toolTip"].innerHTML = "<h1>URL Copied!</h1>";
 }
 
 function hideCopyBuildNotification() {
