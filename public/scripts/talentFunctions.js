@@ -640,10 +640,12 @@ function generateDescription(event) {
         currentTreeTalentsArray = Object.values(classTalentsDict[currentClass][currentTalentTreeId].talents[0])
         currentTreeTalentsArray.forEach(function (talentData) {
             if (talentImage.dataset.name == talentData.name) {
-                DOM["toolTip"].style.top = "0";
-                DOM["toolTip"].style.left = "0";
-                DOM["toolTip"].style.position = "fixed";
-                DOM["toolTip"].style.position = "fixed";
+                if (event.pageX > (window.innerWidth * .5)) {
+                    DOM["toolTip"].style.left = (talentImage.getBoundingClientRect().left - 60) + "px";
+                } else {
+                    DOM["toolTip"].style.left = (talentImage.getBoundingClientRect().left + 30) + "px";
+                }
+                DOM["toolTip"].style.top = (talentImage.getBoundingClientRect().top - DOM["toolTip"].offsetHeight) + "px";
                 DOM["toolTip"].style.width = "150px";
                 DOM["toolTip"].style.visibility = "visible";
                 DOM["toolTip"].innerHTML = "<h1>" + talentData.name + "</h1>" + "\n" + "<p>" + talentData.description(talentImage.dataset.currentRank) + "</p>";
@@ -657,7 +659,10 @@ function generateDescription(event) {
 
 function hideDescription(event) {
     if (event.target.parentNode.tagName.toLowerCase() == 'td') {
-        DOM["toolTip"].style.visibility = "hidden"
+        DOM["toolTip"].style.visibility = "hidden";
+        DOM["toolTip"].style.left = "";
+        DOM["toolTip"].style.top = "";
+        DOM["toolTip"].style.width = "";
     }
 }
 
@@ -809,12 +814,14 @@ function copyBuild() {
     copyInput.select();
     document.execCommand("copy");
     document.body.removeChild(copyInput);
+    DOM["toolTip"].style.left = (DOM["copyBuildButton"].getBoundingClientRect().left + 30) + "px";
+    DOM["toolTip"].style.top = (DOM["copyBuildButton"].getBoundingClientRect().top + 30) + "px";
     DOM["toolTip"].style.visibility = "visible";
     DOM["toolTip"].innerHTML = "<h1>URL Copied!</h1>";
 }
 
 function hideCopyBuildNotification() {
-    document.querySelector(".tooltip").style.visibility = "hidden";
+    DOM["toolTip"].style.visibility = "hidden";
 }
 
 DOM["copyBuildButton"].addEventListener('click', copyBuild);
