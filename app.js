@@ -40,27 +40,27 @@ mailer.use('compile', mailerhbs({
 }));
 
 
-app.get("/", function (req, res) {
+app.get("/", function(req, res) {
     res.render("talent")
 });
 
-app.get("/talent", function (req, res) {
+app.get("/talent", function(req, res) {
     res.render("talent")
 });
 
-app.get("/talent/:class/", function (req, res) {
+app.get("/talent/:class/", function(req, res) {
     res.render("talent")
 });
 
-app.get("/talent/:class/:talents", function (req, res) {
+app.get("/talent/:class/:talents", function(req, res) {
     res.render("talent")
 });
 
-app.get("/suggestion", function (req, res) {
+app.get("/suggestion", function(req, res) {
     res.render("suggestion")
 });
 
-app.post("/suggestion", function (req, res) {
+app.post("/suggestion", function(req, res) {
     mailer.sendMail({
         from: process.env.emailname,
         to: process.env.emailname,
@@ -78,10 +78,10 @@ app.post("/suggestion", function (req, res) {
 });
 
 
-app.get('*', function (req, res) {
+app.get('*', function(req, res) {
     res.render("error")
 })
 
-app.listen(process.env.PORT || "3000", process.env.IP, function () {
+app.listen(process.env.PORT || "3000", process.env.IP, function() {
     console.log("App is up");
 });

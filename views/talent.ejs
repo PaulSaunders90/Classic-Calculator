@@ -1,4 +1,4 @@
-<% include partials/header %>
+<% include ('partials/header') %>
 
     <div class="generalcontainer">
         <div id="scrollarrow"></div>
@@ -90,14 +90,14 @@
     <script src="/talent-data/warrior.js"></script>
     <script src="/scripts/talentFunctions.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             const characterButtons = Array.from(document.querySelectorAll('.character-button'));
             const talentButtons = Array.from(document.getElementsByTagName('td'));
             const menuButtons = Array.from(document.querySelectorAll('.menu-button'));
             characterButtons.forEach(button => button.addEventListener('click', selectClass));
             characterButtons.forEach(button => button.addEventListener('click', displayCharacter));
             menuButtons.forEach(menuButton => menuButton.addEventListener('click', toggleMenuText));
-            menuButtons.forEach(menuButton => menuButton.addEventListener('click', function (e) {
+            menuButtons.forEach(menuButton => menuButton.addEventListener('click', function(e) {
                 e.preventDefault()
             }));
             translateURL()
@@ -105,4 +105,4 @@
     </script>
 
 
-    <% include partials/footer %>
+    <% include ('partials/footer') %>
